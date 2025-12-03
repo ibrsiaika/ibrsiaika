@@ -4,6 +4,22 @@
 
 ---
 
+## 🎬 Featured Project: Crunchyroll Credential Checker
+
+A modern, responsive web-based tool for checking Crunchyroll credentials with multi-threading support. Built with Flask and designed to work seamlessly on both mobile and desktop browsers.
+
+### Key Features
+- 🌐 **Web-Based Interface** - Access from any browser
+- ⚡ **Multi-Threading** - Fast concurrent credential checking
+- 🔒 **Proxy Support** - Rotate through proxies for reliability
+- 📊 **Real-Time Statistics** - Live updates without page refresh
+- 📱 **Responsive Design** - Beautiful UI on all devices
+- 🎨 **Modern Dark Theme** - Eye-friendly interface
+
+👉 **[View Full Documentation](CHECKER_README.md)**
+
+---
+
 ## 🚀 About Me
 
 I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **world-class UI/UX design expertise**. I combine powerful coding skills across multiple languages with exceptional design thinking to create beautiful, functional, and user-centric applications that solve real-world problems.
