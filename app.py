@@ -19,6 +19,8 @@ from queue import Queue
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+# Use SECRET_KEY environment variable for production, or set a random key for development
+# Note: Random key will change on restart, invalidating sessions
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', os.urandom(24).hex())
 
 # Ensure upload directory exists
@@ -390,7 +392,7 @@ def status_stream():
                 log_data = status_queue.get()
                 yield f"data: {json.dumps({'type': 'log', 'data': log_data})}\n\n"
             
-            time.sleep(0.5)
+            time.sleep(0.2)
     
     return Response(generate(), mimetype='text/event-stream')
 
