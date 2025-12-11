@@ -49,7 +49,6 @@ I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **worl
 - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3**
 - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) **JavaScript**
 - ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) **React**
-- ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vue.js&logoColor=white) **Vue.js**
 - ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **TypeScript**
 
 ### **Backend Development**
@@ -105,20 +104,6 @@ I believe that **great code** and **world-class design** are inseparable. Every 
 
 ---
 
-## 📊 **Skills Overview**
-
-| Category | Proficiency | Expertise |
-|----------|-------------|-----------|
-| **UI/UX Design** | ⭐⭐⭐⭐⭐ | Expert - World-Class |
-| **Python** | ⭐⭐⭐⭐⭐ | Master - Favorite |
-| **C/C++** | ⭐⭐⭐⭐⭐ | Master - Favorite |
-| **Frontend Development** | ⭐⭐⭐⭐⭐ | Expert |
-| **JavaScript** | ⭐⭐⭐⭐⭐ | Master |
-| **Backend Development** | ⭐⭐⭐⭐ | Advanced |
-| **Database Design** | ⭐⭐⭐⭐ | Advanced |
-| **Full Stack** | ⭐⭐⭐⭐⭐ | Expert |
-
----
 
 ## 🌟 **Featured Projects**
 
