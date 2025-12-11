@@ -4,22 +4,6 @@
 
 ---
 
-## 🎬 Featured Project: Crunchyroll Credential Checker
-
-A modern, responsive web-based tool for checking Crunchyroll credentials with multi-threading support. Built with Flask and designed to work seamlessly on both mobile and desktop browsers.
-
-### Key Features
-- 🌐 **Web-Based Interface** - Access from any browser
-- ⚡ **Multi-Threading** - Fast concurrent credential checking
-- 🔒 **Proxy Support** - Rotate through proxies for reliability
-- 📊 **Real-Time Statistics** - Live updates without page refresh
-- 📱 **Responsive Design** - Beautiful UI on all devices
-- 🎨 **Modern Dark Theme** - Eye-friendly interface
-
-👉 **[View Full Documentation](CHECKER_README.md)**
-
----
-
 ## 🚀 About Me
 
 I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **world-class UI/UX design expertise**. I combine powerful coding skills across multiple languages with exceptional design thinking to create beautiful, functional, and user-centric applications that solve real-world problems.
@@ -36,8 +20,6 @@ I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **worl
 ### 🎨 **UI/UX Design** (World-Class Expert)
 *Recognized expertise in creating intuitive, beautiful, and accessible user experiences*
 
-- ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white) **Figma** - Advanced prototyping & design systems
-- ![Adobe XD](https://img.shields.io/badge/Adobe%20XD-FF26BE?style=flat-square&logo=adobe-xd&logoColor=white) **Adobe XD** - Interactive design & wireframing
 - **Design Systems** - Component libraries & design tokens
 - **User Research** - Usability testing & user interviews
 - **Responsive Design** - Mobile-first & adaptive layouts
@@ -69,11 +51,9 @@ I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **worl
 - ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) **React**
 - ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vue.js&logoColor=white) **Vue.js**
 - ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) **TypeScript**
-- ![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white) **Angular**
 
 ### **Backend Development**
 - ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white) **Node.js**
-- ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) **Express.js**
 - ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) **Python** ⭐ Favorite
 - ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white) **C** ⭐ Favorite
 - ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) **C++** ⭐ Favorite
@@ -82,7 +62,6 @@ I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **worl
 
 ### **Databases**
 - ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB**
-- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) **PostgreSQL**
 - ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) **MySQL**
 - ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black) **Firebase**
 
@@ -94,8 +73,6 @@ I'm **Ibrahim**, a passionate and dedicated **Full Stack Developer** with **worl
 - ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker**
 
 ### **Other Technologies**
-- RESTful APIs & GraphQL
-- Progressive Web Apps (PWA)
 - Responsive Web Design
 - Performance Optimization
 - Web Security Best Practices
